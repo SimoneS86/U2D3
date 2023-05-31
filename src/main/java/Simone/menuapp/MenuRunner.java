@@ -1,5 +1,7 @@
 package Simone.menuapp;
 
+import java.util.UUID;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -29,7 +31,7 @@ public class MenuRunner implements CommandLineRunner {
 		Tavolo tavolo = new Tavolo(1, 5, true);
 		Double costoCoperto = 2.5;
 
-		Ordine ordine = creaOrdine(tavolo, 3, costoCoperto);
+		Ordine ordine = creaOrdine(tavolo, 5, costoCoperto);
 		valorizzaOrdine(ordine);
 		stampaOrdine(ordine);
 
@@ -38,7 +40,7 @@ public class MenuRunner implements CommandLineRunner {
 	}
 
 	private void valorizzaOrdine(Ordine ordine) {
-		for (int i = 0; i < 3; i++) {
+		for (int i = 0; i < 2; i++) {
 			Pizza pizza = ctx.getBean(Pizza.class);
 			ordine.addMenuItem(pizza);
 		}
@@ -66,7 +68,7 @@ public class MenuRunner implements CommandLineRunner {
 		Ordine ordine = ctx.getBean(Ordine.class);
 		ordine.setTavolo(tavolo);
 		ordine.setNumeroCoperti(numeroCoperti);
-		ordine.setNumeroOrdine(1);
+		ordine.setNumeroOrdine(UUID.randomUUID());
 		ordine.setCostoCoperto(costoCoperto);
 		return ordine;
 	}

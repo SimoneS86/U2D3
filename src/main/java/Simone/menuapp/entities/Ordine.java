@@ -2,6 +2,7 @@ package Simone.menuapp.entities;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -15,7 +16,7 @@ public class Ordine {
 
 	}
 
-	private Integer numeroOrdine;
+	private UUID numeroOrdine;
 	private Tavolo tavolo;
 	private final Map<Product, Integer> ordinato = new HashMap<>();
 	private StatoOrdine stato = StatoOrdine.IN_CORSO;
